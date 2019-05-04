@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test34_path2d.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://test34_curve.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, -160, 0, 320, -160, 0, 0, 0, 320, 0 )
+}
+
+[node name="Node" type="Node"]
+
+[node name="cont" type="Node2D" parent="."]
+position = Vector2( 400, 160 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="cont"]
+show_behind_parent = true
+margin_right = 64.0
+margin_bottom = 64.0
+rect_scale = Vector2( 5, 5 )
+max_value = 495.559
+step = 4.95559
+value = 495.559
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+radial_initial_angle = 270.0
+radial_fill_degrees = 90.0
+radial_center_offset = Vector2( 32, 32 )
+
+[node name="Path2D" type="Path2D" parent="cont"]
+show_behind_parent = true
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="cont/Path2D"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 320, 0 )
+offset = 495.56
+rotate = false
+loop = false
+
+[node name="TextureRect" type="TextureRect" parent="cont/Path2D/PathFollow2D"]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+
